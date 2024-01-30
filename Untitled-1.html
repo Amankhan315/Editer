@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background-color: wheat;
+            /* border: 1px solid; */
+        }
+
+        .headingbox {
+            height: 15vh;
+            width: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 60px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: 600;
+            color: white;
+            /* border: 1px solid; */
+        }
+
+        .stylebox {
+            height: 18vh;
+            width: 70%;
+            /* border: 1px solid; */
+        }
+
+        .box {
+            height: 65vh;
+            width: 50%;
+            /* border: 1px solid; */
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="headingbox">Update CSS Variables with<span style="color: black;">JS</span></div>
+        <div class="stylebox">
+            Spacing: <input type="range" id="range" value="10" min="0" max="100">
+            Blur: <input type="range" id="range" value="0" min="0" max="50">
+            rotate: <input id="range" type="range" value="0" min="0" max="100">
+            scale: <input id="range" type="range" min="0" value="0" max="100">
+            Base Color: <input class="color" type="color">
+        </div>
+        <div class="box">
+            <img src="./4.jpg" alt="">
+        </div>
+    </div>
+
+    <script>
+        let range = document.querySelectorAll("#range")
+        let boxe = document.querySelector(".box")
+        let img = document.querySelector(".box img")
+        let color = document.querySelector(".color")
+        let span = document.querySelector(".heading span")
+
+        range[0].addEventListener('input', (e) => {
+            let value = e.target.value
+            boxe.style.padding = `${value}px`
+        })
+        range[1].addEventListener('input', (e) => {
+            let value = e.target.value
+            boxe.style.filter = `blur(${value}px)`
+        })
+        range[2].addEventListener('input', (e) => {
+            let value = e.target.value
+            boxe.style.transform = `rotate(${value}deg)`
+        })
+        range[3].addEventListener('input', (e) => {
+            let value = e.target.value
+            img.style.transform = `scale(${value})`
+        })
+        color.addEventListener('input', (e) => {
+            let value = e.target.value
+            boxe.style.backgroundColor = value
+            span.style.color = value
+        })
+    </script>
+</body>
+
+</html>
